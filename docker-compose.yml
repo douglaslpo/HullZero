@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # API Principal
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hullzero-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://hullzero:hullzero@db:5432/hullzero
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=development
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./src:/app/src
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # PostgreSQL + TimescaleDB
+  db:
+    image: timescale/timescaledb:latest-pg15
+    container_name: hullzero-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=hullzero
+      - POSTGRES_PASSWORD=hullzero
+      - POSTGRES_DB=hullzero
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # Redis
+  redis:
+    image: redis:7-alpine
+    container_name: hullzero-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # PgAdmin (Opcional - para desenvolvimento)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: hullzero-pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@hullzero.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  redis_data:
+

@@ -1,0 +1,16 @@
+LINK DO PROTÓTIPO FUNCIONAL
+
+https://hullzero.siog.com.br/
+
+Exemplos de links aceitos:
+- Link do deploy da aplicação (Heroku, AWS, Azure, etc.)
+- Link do repositório com instruções de execução
+- Link do ambiente de demonstração
+
+INSTRUÇÕES PARA ACESSO:
+1. [Instruções de acesso ao protótipo]
+2. [Credenciais de teste, se necessário]
+3. [Funcionalidades disponíveis para demonstração]
+
+NOTA: O protótipo deve estar funcional e acessível para avaliação.
+
