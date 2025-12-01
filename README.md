@@ -108,15 +108,13 @@ iniciar_aplicacao.bat        # CMD
 
 #### Linux/Mac:
 - `./iniciar_aplicacao.sh` - Inicia Backend + Frontend (com inicialização automática do banco)
-- `./run_local.sh` - Inicia apenas Backend
 - `./verificar_status.sh` - Verifica status dos serviços
 - `./parar_aplicacao.sh` - Para todos os serviços
 
 #### Windows:
-- `iniciar_aplicacao.bat` / `iniciar_aplicacao.ps1` - Inicia Backend + Frontend (com inicialização automática do banco)
-- `run_local.bat` - Inicia apenas Backend
+- `iniciar_aplicacao.bat` - Inicia Backend + Frontend (com inicialização automática do banco)
 - `verificar_status.bat` - Verifica status dos serviços
-- `parar_aplicacao.bat` / `parar_aplicacao.ps1` - Para todos os serviços
+- `parar_aplicacao.bat` - Para todos os serviços
 
 ## 🏗️ Estrutura do Projeto
 
